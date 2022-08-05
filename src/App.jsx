@@ -1,12 +1,18 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
+import reactLogo from '@/assets/react.svg';
 import './App.css';
+import s from './style.module.less';
+import styled from '@emotion/styled';
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <div className="App">
+      <div className={s.index}>
+        <span>样式</span>
+      </div>
+      <Container />
       <div>
         <a href="https://vitejs.dev" rel="noreferrer" target="_blank">
           <img alt="Vite logo" className="logo" src="/vite.svg" />
@@ -26,5 +32,12 @@ function App() {
     </div>
   );
 }
+
+const Container = styled.div`
+  width: 200px;
+  height: 200px;
+  background-color: skyblue;
+  float: left;
+`;
 
 export default App;
