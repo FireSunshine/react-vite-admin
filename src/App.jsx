@@ -3,6 +3,7 @@ import reactLogo from '@/assets/react.svg';
 import './App.css';
 import s from './style.module.less';
 import styled from '@emotion/styled';
+import { Button } from 'antd';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,6 +12,9 @@ function App() {
     <div className="App">
       <div className={s.index}>
         <span>样式</span>
+        <Button loading type="primary">
+          我是antd的Button
+        </Button>
       </div>
       <Container />
       <div>
