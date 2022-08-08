@@ -6,3 +6,7 @@ export const getAccountList = (params) => request({ url: '/api/bill/list', metho
 
 // 删除账单
 export const deleteAccount = (data) => request({ url: '/api/bill/delete', method: 'post', data });
+// 获取消费类型
+export const getCostType = (params) => request({ url: '/api/type/list', method: 'get', params });
+// 添加账单
+export const addCostType = (data) => request({ url: '/api/bill/add', method: 'post', data });
