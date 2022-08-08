@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { message } from 'antd';
 
-const baseURL = 'http://localhost:8080'; // 服务地址
-const version = '/api/v1';
+const baseURL = 'http://api.chennick.wang'; // 服务地址
 
 const instance = axios.create({
-  baseURL: baseURL + version,
+  baseURL: baseURL,
   timeout: 5000,
   headers: {}
 });
@@ -50,8 +49,9 @@ instance.interceptors.response.use(function (response) {
   if (response.data.code !== 200) {
     if (response?.data?.msg) message.error(response.data.msg);
     if (response.data.code === 401) {
-      window.location.href = '/login';
+      // window.location.href = '/login';
       message.error('token失效， 登录过期');
+      window.localStorage.removeItem('token');
     }
     return Promise.reject(response.data);
   }
