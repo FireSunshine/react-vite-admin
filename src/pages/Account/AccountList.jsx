@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { getAccountList, deleteAccount } from '@/api/account';
 import { message, Modal, Table, Tag } from 'antd';
 import styled from '@emotion/styled';
+import { useHistory } from 'react-router-dom';
 
 const AccountList = () => {
   const [pageInfo, setPageInfo] = useState({
@@ -14,6 +15,7 @@ const AccountList = () => {
   const [loading, setLoading] = useState(false);
   const [deleteId, setDeleteId] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const history = useHistory();
 
   const getData = async (currentPage) => {
     const params = {
@@ -49,7 +51,7 @@ const AccountList = () => {
       if (dataSource.length === 1 && dataSource[0].children.length === 1) {
         getData(pageInfo.current - 1);
       } else {
-        getData();
+        getData(1);
       }
       setIsModalVisible(false);
     }
@@ -119,7 +121,12 @@ const AccountList = () => {
       render: (text, record) =>
         typeof record.id === 'number' ? (
           <>
-            <TagOperate color="#2db7f5" onClick={() => {}}>
+            <TagOperate
+              color="#2db7f5"
+              onClick={() => {
+                history.push(`/account/editAccount/${record.id}`);
+              }}
+            >
               编辑
             </TagOperate>
             <TagOperate

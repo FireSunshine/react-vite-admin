@@ -10,3 +10,7 @@ export const deleteAccount = (data) => request({ url: '/api/bill/delete', method
 export const getCostType = (params) => request({ url: '/api/type/list', method: 'get', params });
 // 添加账单
 export const addCostType = (data) => request({ url: '/api/bill/add', method: 'post', data });
+// 获取账单详情
+export const getAccountInfo = (params) => request({ url: '/api/bill/detail', method: 'get', params });
+// 编辑账单
+export const editCostType = (data) => request({ url: '/api/bill/update', method: 'post', data });

@@ -26,15 +26,15 @@ const routes = [
     label: '用户管理',
     icon: UserOutlined,
     children: [
-      {
-        key: 1111,
-        label: '添加用户',
-        path: '/user/adduser',
-        component: AddUser
-      },
+      // {
+      //   key: 1111,
+      //   label: '添加用户',
+      //   path: '/user/adduser',
+      //   component: AddUser
+      // },
       {
         key: 1112,
-        label: '编辑用户',
+        label: '修改用户信息',
         path: '/user/edituser/:id',
         component: EditUser
       }

@@ -1,13 +1,14 @@
 /**
  * 添加账单和编辑账单的公用表单
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Select, DatePicker, InputNumber, Input } from 'antd';
 import styled from '@emotion/styled';
+import moment from 'moment';
 const { Option } = Select;
 const { TextArea } = Input;
 
-const AddEditForm = ({ form, costAllType }) => {
+const AddEditForm = ({ form, costAllType, accountInfo }) => {
   // 表单验证规则
   const rules = [
     {
@@ -35,6 +36,20 @@ const AddEditForm = ({ form, costAllType }) => {
     // setCostType(list);
   };
 
+  useEffect(() => {
+    // 如果是编辑，则需要回显数据
+    if (accountInfo) {
+      setCostType(costAllType.filter((item) => item.type === accountInfo?.pay_type?.toString()));
+      form.setFieldsValue({
+        amount: Number(accountInfo?.amount),
+        pay_type: accountInfo?.pay_type?.toString(),
+        type_id: accountInfo?.type_id,
+        remark: accountInfo?.remark,
+        date: moment(Number(accountInfo?.date))
+      });
+    }
+  }, [accountInfo, costAllType]);
+
   return (
     <FormBox form={form}>
       <Form.Item name="amount" label="订单金额" rules={rules}>
@@ -57,7 +72,7 @@ const AddEditForm = ({ form, costAllType }) => {
         </Select>
       </Form.Item>
       <Form.Item name="date" label="消费时间" rules={rules}>
-        <DatePicker placeholder="请输入消费时间" style={{ width: '100%' }} />
+        <DatePicker placeholder="请输入消费时间" style={{ width: '100%' }} onChange={(e) => console.log(e)} />
       </Form.Item>
       <Form.Item name="remark" label="账单备注" rules={rules}>
         <TextArea

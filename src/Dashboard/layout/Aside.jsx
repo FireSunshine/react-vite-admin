@@ -14,6 +14,7 @@ const Aside = () => {
       key: item.key,
       icon: <item.icon />,
       children: item?.children.map((ele) => {
+        if (ele.label.includes('编辑')) return;
         return {
           label: <Link to={ele.path}>{ele.label}</Link>,
           key: ele?.key
