@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { message } from 'antd';
 
-const baseURL = 'http://api.chennick.wang'; // 服务地址
+export const baseURL = 'http://api.chennick.wang'; // 服务地址
 
 const instance = axios.create({
   baseURL: baseURL,

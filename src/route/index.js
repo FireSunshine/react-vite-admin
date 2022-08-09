@@ -1,4 +1,4 @@
-import AddUser from '@/pages/User/AddUser';
+// import AddUser from '@/pages/User/AddUser';
 import EditUser from '@/pages/User/EditUser';
 import AddAccount from '@/pages/Account/AddAccount';
 import EditAccount from '@/pages/Account/EditAccount';
@@ -35,7 +35,7 @@ const routes = [
       {
         key: 1112,
         label: '修改用户信息',
-        path: '/user/edituser/:id',
+        path: '/user/edituser/',
         component: EditUser
       }
     ]

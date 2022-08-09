@@ -72,7 +72,7 @@ const AddEditForm = ({ form, costAllType, accountInfo }) => {
         </Select>
       </Form.Item>
       <Form.Item name="date" label="消费时间" rules={rules}>
-        <DatePicker placeholder="请输入消费时间" style={{ width: '100%' }} onChange={(e) => console.log(e)} />
+        <DatePicker placeholder="请输入消费时间" style={{ width: '100%' }} />
       </Form.Item>
       <Form.Item name="remark" label="账单备注" rules={rules}>
         <TextArea
