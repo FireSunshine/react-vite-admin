@@ -50,8 +50,9 @@ instance.interceptors.response.use(function (response) {
     if (response?.data?.msg) message.error(response.data.msg);
     if (response.data.code === 401) {
       // window.location.href = '/login';
-      message.error('token失效， 登录过期');
-      // window.localStorage.removeItem('token');
+      // message.error('token失效， 登录过期');
+      window.localStorage.removeItem('token');
+      window.location.reload();
     }
     return Promise.reject(response.data);
   }
