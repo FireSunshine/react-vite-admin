@@ -7,3 +7,5 @@ import request from '@/utils/axios';
 export const getUserInfo = (params) => request({ url: '/api/user/get_userinfo', method: 'get', params });
 // 修改用户信息
 export const modifyUserInfo = (data) => request({ url: '/api/user/edit_userinfo', method: 'post', data });
+// 修改密码
+export const modifyPassword = (data) => request({ url: '/api/user/modify_pass', method: 'post', data });

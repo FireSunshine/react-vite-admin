@@ -1,9 +1,13 @@
+import loadable from '@loadable/component';
+
 // import AddUser from '@/pages/User/AddUser';
-import EditUser from '@/pages/User/EditUser';
-import AddAccount from '@/pages/Account/AddAccount';
-import EditAccount from '@/pages/Account/EditAccount';
-import AccountList from '@/pages/Account/AccountList';
-import Home from '@/pages/Home/Home';
+
+const EditUser = loadable(() => import('@/pages/User/EditUser'));
+const AddAccount = loadable(() => import('@/pages/Account/AddAccount'));
+const EditAccount = loadable(() => import('@/pages/Account/EditAccount'));
+const AccountList = loadable(() => import('@/pages/Account/AccountList'));
+const Home = loadable(() => import('@/pages/Home/Home'));
+const ModifyPassword = loadable(() => import('@/pages/User/ModifyPassword'));
 
 import { HomeOutlined, AccountBookOutlined, UserOutlined } from '@ant-design/icons';
 
@@ -37,6 +41,12 @@ const routes = [
         label: '修改用户信息',
         path: '/user/edituser/',
         component: EditUser
+      },
+      {
+        key: 1113,
+        label: '重置密码',
+        path: '/user/modifyPassword/',
+        component: ModifyPassword
       }
     ]
   },

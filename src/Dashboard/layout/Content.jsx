@@ -56,4 +56,5 @@ const ContentBox = styled(Layout.Content)`
 `;
 const DropdownBox = styled(Dropdown)`
   float: right;
+  cursor: pointer;
 `;
