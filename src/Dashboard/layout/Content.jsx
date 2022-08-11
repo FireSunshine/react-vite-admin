@@ -1,8 +1,9 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Layout, Dropdown, Menu } from 'antd';
 import styled from '@emotion/styled';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import routes from '@/route';
+import { CaretDownOutlined } from '@ant-design/icons';
 
 const Content = () => {
   const renderRoutes = () => {
@@ -18,9 +19,22 @@ const Content = () => {
     });
     return res;
   };
+
+  // 退出登录
+  const logout = () => {
+    window.localStorage.removeItem('token');
+    window.location.reload();
+  };
   return (
     <Layout>
-      <Layout.Header />
+      <Layout.Header>
+        <DropdownBox overlay={<Menu items={[{ label: <div onClick={() => logout()}>退出登录</div>, key: '1' }]} />}>
+          <span style={{ color: 'rgb(255, 255, 255)' }} onClick={(e) => e.preventDefault()}>
+            Hi, {'admin'}
+            <CaretDownOutlined />
+          </span>
+        </DropdownBox>
+      </Layout.Header>
       <ContentBox>
         <Switch>
           {renderRoutes()}
@@ -39,4 +53,7 @@ const Foorter = styled(Layout.Footer)`
 `;
 const ContentBox = styled(Layout.Content)`
   margin: 15px;
+`;
+const DropdownBox = styled(Dropdown)`
+  float: right;
 `;
